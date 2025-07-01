@@ -83,7 +83,7 @@ export const HoverEffect = ({
                   {item.stock === 0 ? "Out of Stock" : "Buy Now"}
                 </button>
                 {item.stock !== undefined && item.stock > 5 && (
-                  <div className="absolute bottom-4 right-2 bg-green-600 text-white text-xs px-2 py-0.5 rounded">
+                  <div className="absolute bottom-1 right-1 bg-green-600 text-white text-xs px-2 py-0.5 rounded">
                     In stock
                   </div>
                 )}
