@@ -7,10 +7,12 @@ import Links from "@/components/Links";
 import Navbar from "@/components/Navbar";
 import Newsletter from "@/components/Newsletter";
 import Products from "@/components/Products";
+import Logo from "../components/logo";
 
 export default function HomePage() {
   return (
     <main>
+      <Logo />
       <Navbar />
       <CartDrawer />
       <Hero />
