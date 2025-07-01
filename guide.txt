@@ -1,0 +1,41 @@
+
+2. App Routing & Metadata
+Add proper SEO metadata for each section.
+
+Set up anchor IDs (#products, #about, etc.) for smooth scrolling.
+
+4. Payment Integration
+Even dummy checkout looks better with a "Pay with M-PESA" or "Coming Soon" message.
+
+Stripe or M-PESA integration can be added later.
+
+🚀 Final Checklist Before Launch
+
+🎨 Branding & Visual Polish
+ Add The Vault logo in the navbar
+
+ Apply a consistent color scheme and typography
+
+ Add favicon, open graph meta tags, and page title
+
+ Mobile responsiveness test
+
+ Add loading spinners during async actions
+
+🌐 Deployment Tasks
+ Connect a custom domain (thevault.shop or similar)
+
+ Set proper CORS and permissions in Appwrite
+
+ Use environment variables in .env.local (clean up hardcoded values)
+
+ Optimize images (lazy loading, sizing)
+
+🔒 Optional Extras (Post-MVP)
+ Email notifications (order confirmation, admin alerts)
+
+ Analytics (e.g., Plausible, Vercel Analytics)
+
+ Discount codes / promo logic
+
+ Product categories and search
