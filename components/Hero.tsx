@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function HeroSection() {
   return (
     <div className="md:h-[82vh] w-full max-w-full flex flex-col items-center justify-center relative overflow-hidden bg-black">
-      <div className="inset-0 z-0 mx-60">
+      <div className="inset-0 z-0 md:mx-60">
         <img
           src="/thevaultprofile.png"
           alt="Vault Background"

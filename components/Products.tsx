@@ -28,7 +28,7 @@ export default function Products() {
   }, []);
 
   return (
-    <section className="py-7 px-10 bg-black">
+    <section className="py-7 md:px-10 bg-black">
       
 
         {products.length > 0 ? (
