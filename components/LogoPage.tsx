@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useUser } from "@/context/UserContext";
 
-const Logo = () => {
+const LogoIcon = () => {
   const { user } = useUser();
 
   if (!user)
@@ -32,4 +32,4 @@ const Logo = () => {
   );
 };
 
-export default Logo;
+export default LogoIcon;
