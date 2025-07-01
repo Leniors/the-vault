@@ -45,7 +45,7 @@ const platforms = [
 export default function Links() {
   return (
     <section className="py-16 bg-black text-white text-center">
-      <h2 className="text-3xl md:text-4xl font-bold mb-10">Find us on</h2>
+      <h2 className="text-3xl md:text-2xl font-bold mb-10">Find us on</h2>
 
       <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto px-3">
         {platforms.map(({ name, href, icon }) => (
@@ -57,8 +57,8 @@ export default function Links() {
             aria-label={`Find us on ${name}`}
             className="flex flex-col items-center space-y-2 hover:scale-110 transition-transform duration-200"
           >
-            <div className="text-4xl">{icon}</div>
-            <span className="text-sm text-white">{name}</span>
+            <div className="text-2xl">{icon}</div>
+            <span className="text-xsm text-white">{name}</span>
           </a>
         ))}
       </div>

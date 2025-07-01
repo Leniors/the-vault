@@ -10,7 +10,7 @@ export default function Events() {
 
   return (
     <div className="w-full h-full py-20 text-center bg-black text-white">
-      <h2 className="max-w-6xl mx-auto text-3xl md:text-5xl font-bold font-sans mb-12 px-4">
+      <h2 className="max-w-6xl mx-auto text-3xl md:text-4xl font-bold font-sans mb-12 px-4">
         Upcoming Events at The Vault
       </h2>
       <Carousel items={cards} />

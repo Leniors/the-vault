@@ -2,7 +2,7 @@ export default function About() {
   return (
     <section className="py-16 bg-black text-white">
       <div className="container mx-auto px-4 max-w-4xl text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+        <h2 className="text-4xl md:text-4xl font-bold mb-6 tracking-tight">
           About The Vault
         </h2>
 
