@@ -4,7 +4,7 @@ import Events from "@/components/Events";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Links from "@/components/Links";
-import Logo from "@/components/Logo";
+import Logo from "@/components/logo";
 import Navbar from "@/components/Navbar";
 import Newsletter from "@/components/Newsletter";
 import Products from "@/components/Products";
