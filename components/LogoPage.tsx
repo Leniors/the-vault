@@ -13,7 +13,7 @@ const LogoIcon = () => {
           <img
             src="/thevaultlogo.png"
             alt="The Vault Logo"
-            className="w-12 h-12 md:w-40 md:h-40 object-cover rounded-full shadow-lg"
+            className="w-12 h-12 object-cover rounded-full shadow-lg"
           />
         </Link>
       </div>
@@ -25,7 +25,7 @@ const LogoIcon = () => {
         <img
             src="/thevaultlogo.png"
             alt="The Vault Logo"
-            className="w-12 h-12 md:w-40 md:h-40 object-cover rounded-full shadow-lg"
+            className="w-12 h-12 object-cover rounded-full shadow-lg"
         />
         </Link>
     </div>

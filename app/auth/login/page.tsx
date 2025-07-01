@@ -33,7 +33,7 @@ export default function LoginPage() {
   useEffect(() => {
     account
       .get()
-      .then(() => router.push("/dashboard"))
+      .then(() => router.push("/"))
       .catch(() => {});
   }, []);
 
@@ -49,7 +49,7 @@ export default function LoginPage() {
     try {
       await account.createEmailPasswordSession(values.email, values.password);
       await refreshUser();
-      router.push("/dashboard");
+      router.push("/");
     } catch (err: any) {
       toast.error(err.message || "Login failed. Check your credentials.");
     }
