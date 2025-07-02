@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams, notFound } from "next/navigation";
 import { toast } from "sonner";
 import { useForm, useWatch } from "react-hook-form";
 import {
@@ -19,13 +19,12 @@ import { submitOrderAction, getProductById } from "@/lib/actions";
 import { account } from "@/lib/appwrite";
 import { Button } from "@/components/ui/button";
 import { Loader } from "lucide-react";
-import { useParams, notFound } from "next/navigation";
 
 export default function SingleCheckoutPageWrapper() {
   const params = useParams();
-  const [product, setProduct] = useState<any | null>(null);
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const [product, setProduct] = useState<any | null>(null);
+  const [loading, setLoading] = useState(true);
 
   const form = useForm({
     defaultValues: {
@@ -43,18 +42,39 @@ export default function SingleCheckoutPageWrapper() {
     },
   });
 
+  const paymentMethod = useWatch({ control: form.control, name: "payment" });
+
   useEffect(() => {
     const fetchProduct = async () => {
-      const prod = await getProductById(params.productId as string);
-      if (!prod) return notFound();
-      setProduct(prod);
+      try {
+        const prod = await getProductById(params.productId as string);
+        if (!prod) {
+          setLoading(false);
+          return;
+        }
+        setProduct(prod);
+      } catch (err) {
+        console.error("Error fetching product:", err);
+      } finally {
+        setLoading(false);
+      }
     };
+
     fetchProduct();
   }, [params.productId]);
 
-  const paymentMethod = useWatch({ control: form.control, name: "payment" });
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white">
+        <Loader className="w-6 h-6 animate-spin" />
+      </div>
+    );
+  }
 
-  if (!product) return notFound();
+  if (!product) {
+    return notFound();
+  }
+
   const total = product.price;
   const items = [{ ...product, quantity: 1 }];
 
@@ -64,7 +84,6 @@ export default function SingleCheckoutPageWrapper() {
       const result = await submitOrderAction(data, items, total);
       if (result.success) {
         toast.success(`Order placed via ${data.payment.toUpperCase()}!`);
-
         const user = await account.get().catch(() => null);
         if (user) {
           router.push(`/profile/${user.$id}`);
@@ -72,11 +91,7 @@ export default function SingleCheckoutPageWrapper() {
           const proceed = window.confirm(
             "Would you like to create an account to track your order?"
           );
-          if (proceed) {
-            router.push("/auth/register");
-          } else {
-            router.push("/");
-          }
+          router.push(proceed ? "/auth/register" : "/");
         }
       } else {
         toast.error(result.message || "Something went wrong.");
@@ -94,6 +109,7 @@ export default function SingleCheckoutPageWrapper() {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl md:text-4xl font-bold mb-8">Checkout</h1>
         <div className="grid md:grid-cols-2 gap-8">
+          {/* Order Summary */}
           <div>
             <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
             <div className="space-y-4">
@@ -135,11 +151,8 @@ export default function SingleCheckoutPageWrapper() {
           <div>
             <h2 className="text-xl font-semibold mb-4">Your Details</h2>
             <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-4"
-              >
-                {/* Personal Info */}
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                {/* Name */}
                 <FormField
                   control={form.control}
                   name="name"
@@ -159,6 +172,7 @@ export default function SingleCheckoutPageWrapper() {
                   )}
                 />
 
+                {/* Email */}
                 <FormField
                   control={form.control}
                   name="email"
@@ -184,6 +198,7 @@ export default function SingleCheckoutPageWrapper() {
                   )}
                 />
 
+                {/* Phone */}
                 <FormField
                   control={form.control}
                   name="phone"
@@ -203,7 +218,7 @@ export default function SingleCheckoutPageWrapper() {
                   )}
                 />
 
-                {/* Address Info */}
+                {/* Address */}
                 <FormField
                   control={form.control}
                   name="address"
@@ -242,7 +257,6 @@ export default function SingleCheckoutPageWrapper() {
                       </FormItem>
                     )}
                   />
-
                   <FormField
                     control={form.control}
                     name="postal"
@@ -263,7 +277,7 @@ export default function SingleCheckoutPageWrapper() {
                   />
                 </div>
 
-                {/* Payment Method */}
+                {/* Payment */}
                 <FormField
                   control={form.control}
                   name="payment"
@@ -350,7 +364,6 @@ export default function SingleCheckoutPageWrapper() {
                           </FormItem>
                         )}
                       />
-
                       <FormField
                         control={form.control}
                         name="cardCVV"

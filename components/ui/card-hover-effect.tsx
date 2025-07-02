@@ -77,8 +77,8 @@ export const HoverEffect = ({
                   onClick={() => router.push(`/checkout/${item.$id}`)}
                   disabled={item.stock === 0}
                   className={`bg-blue-600 text-white text-md py-1 px-3 rounded mt-2 ${
-  item.stock === 0 ? "bg-gray-600 cursor-not-allowed" : ""
-}`}
+                    item.stock === 0 ? "bg-gray-600 cursor-not-allowed" : ""
+                  }`}
                 >
                   {item.stock === 0 ? "Out of Stock" : "Buy Now"}
                 </button>

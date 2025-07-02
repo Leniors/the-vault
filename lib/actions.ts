@@ -2,7 +2,6 @@
 
 import { databases } from "@/lib/appwrite";
 import { Query } from "appwrite";
-import { toast } from "sonner";
 
 const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
 const ordersCollectionId =
@@ -71,6 +70,7 @@ export async function getProducts() {
 
 export async function getProductById(productId: string) {
   try {
+    console.log("Fetching product with ID:", productId);
     return await databases.getDocument(
       databaseId,
       productsCollectionId,
