@@ -83,19 +83,19 @@ export const HoverEffect = ({
                   {item.stock === 0 ? "Out of Stock" : "Buy Now"}
                 </button>
                 {item.stock !== undefined && item.stock > 5 && (
-                  <div className="absolute top-[0.5px] right-[0.5px] bg-green-600 text-white text-xs px-2 py-0.5 rounded">
+                  <div className="absolute top-[0.1px] right-[0.1px] bg-green-600 text-white text-xs px-2 py-0.5 rounded">
                     In stock
                   </div>
                 )}
                 {item.stock !== undefined &&
                   item.stock < 5 &&
                   item.stock > 0 && (
-                    <div className="absolute top-[0.5px] right-[0.5px] bg-red-600 text-white text-xs px-2 py-0.5 rounded">
+                    <div className="absolute top-[0.1px] right-[0.1px] bg-red-600 text-white text-xs px-2 py-0.5 rounded">
                       Low stock
                     </div>
                   )}
                 {item.stock === 0 && (
-                  <div className="absolute top-[0.5px] right-[0.5px] bg-red-600 text-white text-xs px-2 py-0.5 rounded">
+                  <div className="absolute top-[0.1px] right-[0.1px] bg-red-600 text-white text-xs px-2 py-0.5 rounded">
                     Out of stock
                   </div>
                 )}
